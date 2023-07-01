@@ -50,7 +50,9 @@ class Vector {
         let value = this.#values[index];
         this.#values[index] = 0;
 
-        let iter = this.length - 1;
+        this.length--;
+
+        let iter = this.length;
         let prevNode = this.#values[iter];
         this.#values[iter] = 0;
         while ( iter > index ) {
@@ -60,7 +62,33 @@ class Vector {
             iter--;
         }
 
+        if ( this.length < this.#capacity / 2 ) {
+            let old = this.#values;
+            this.#capacity = this.#capacity / 2;
+            this.#values = new Uint16Array(this.#capacity);
+
+            // Populate new arr with old values
+            for ( let i = 0; i < this.length; i++ ) {
+                this.#values[i] = old[i];
+            }
+        }
+
         return value;
+    }
+
+    sort() {
+        this.#rsort(0, this.length);
+    }
+
+    // Hide the recursive api from the exposed methods on the class
+    #rsort(start, end) {
+        if () {
+
+        }
+    }
+
+    find() {
+
     }
  
     dump() {
