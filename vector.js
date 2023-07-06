@@ -76,14 +76,20 @@ class Vector {
         return value;
     }
 
-    sort() {
-        this.#rsort(0, this.length);
-    }
+    // sort() {
+    //     this.#rsort(0, this.length);
+    // }
 
     // Hide the recursive api from the exposed methods on the class
-    #rsort(start, end) {
-        if () {
+    // #rsort(start, end) {
+    //     if () {
+    //
+    //     }
+    // }
 
+    *[Symbol.iterator]() {
+        for ( let i = 0; i < this.length; i++ ) {
+            yield this.#values[i];
         }
     }
 
@@ -114,3 +120,7 @@ console.log(vec.remove(1000))
 console.log(vec.remove(2));
 console.log(vec.remove(7));
 vec.dump();
+for (let val of vec) {
+    console.log(val)
+}
+
