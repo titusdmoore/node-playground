@@ -4,3 +4,5 @@ const testFunc = (input: string) => {
 }
 
 testFunc("This is something else!");
+let temp = () => {
+}
